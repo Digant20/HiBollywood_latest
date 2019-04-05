@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00bcd4"
+    tools:context=".SignUp">
+
+
+    <ImageView
+        android:layout_width="106dp"
+        android:layout_height="78dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundlogo1"
+        android:src="@drawable/new_logo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up Here!"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        android:layout_gravity="center"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+
+        />
+    <EditText
+
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/rectangle"
+        android:hint="  Full Name"
+        android:textColor="#FFF"
+        android:textColorHint="#e7eaec"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        android:layout_marginTop="15dp"
+
+        />
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:hint="  Email"
+        android:layout_height="40dp"
+        android:textColor="#FFF"
+        android:textColorHint="#e7eaec"
+        android:background="@drawable/rectangle"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:layout_marginTop="15dp"
+
+            />
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:hint="  Password"
+            android:layout_height="40dp"
+            android:textColor="#e7eaec"
+            android:textColorHint="#FFF"
+            android:background="@drawable/rectangle"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:layout_marginTop="15dp"
+
+            />
+        <EditText
+            android:id="@+id/cpassword"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:hint="  Confirm Password"
+            android:layout_height="40dp"
+            android:textColor="#e7eaec"
+            android:textColorHint="#FFF"
+
+            android:background="@drawable/rectangle"
+            />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pbar"
+            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            />
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="Sign Up"
+            android:onClick="signUp"
+            android:textColorHint="#000"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangularsignupbtn"
+            android:layout_marginTop="15dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="bottom|center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:layout_gravity="center"
+                android:text="By signing up, you agree to our"
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="italic"
+
+                    android:layout_marginLeft="70dp"
+                    android:text="Terms of Service"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFF"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center"
+                    android:text=" &amp; "
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:layout_gravity="right"
+                    android:textStyle="italic"
+                    android:layout_marginRight="70dp"
+                    android:text="Privacy Policy"
+                    />
+
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:clickable="true"
+                android:linksClickable="true"
+                android:layout_gravity="center"
+                android:textColor="#FFF"
+                android:text="Having Problems Signing Up?"
+                />
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="2dp"
+                android:src="@drawable/round"
+                android:layout_gravity="bottom|center"
+
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
