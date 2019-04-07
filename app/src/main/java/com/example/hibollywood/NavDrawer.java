@@ -34,16 +34,16 @@ SessionManager sessionManager;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
-sessionManager=new SessionManager(this);
-sessionManager.CheckLogin();
-
-        email=(TextView)findViewById(R.id.emailView);
-
-
-        HashMap<String, String> user=sessionManager.getUserDetails();
-        String mEmail=user.get(sessionManager.EMAIL);
-
-        email.setText(mEmail);
+//sessionManager=new SessionManager(this);
+//sessionManager.CheckLogin();
+//
+//        email=(TextView)findViewById(R.id.emailView);
+//
+//
+//        HashMap<String, String> user=sessionManager.getUserDetails();
+//        String mEmail=user.get(sessionManager.EMAIL);
+//
+//        email.setText(memail);
 
 
 

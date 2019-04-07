@@ -40,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText password;
 
     private TextView signUpText;
-    private static String URL_LOGIN = "http://192.168.43.130/login.php";
+    private static String URL_LOGIN = "http://192.168.43.130/bollywood/login.php";
     private ProgressBar progressBar;
     SessionManager sessionManager;
+
+    String memail, mpass;
 
     //html string code
     //private final String htmlText="<body><h5>BollyWoodConnect</h5></body>";
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //html string code
         // TextView txtV=(TextView) findViewById(R.id.text);
         // txtV.setText(Html.fromHtml(htmlText));
-        sessionManager=new SessionManager(this);
+        sessionManager = new SessionManager(this);
         email = (EditText) findViewById(R.id.email);
         password = (TextInputEditText) findViewById(R.id.pass);
 
@@ -72,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mEmail = email.getText().toString().trim();
-                String mpass = password.getText().toString().trim();
-                if (!mEmail.isEmpty() || !mpass.isEmpty()) {
-                    Login(mEmail, mpass);
+                memail = email.getText().toString().trim();
+                mpass = password.getText().toString().trim();
+                if (!memail.isEmpty() || !mpass.isEmpty()) {
+                    Login(memail, mpass);
                 } else {
                     email.setError("Please insert email");
                     password.setError("Please insert password");
@@ -104,25 +106,39 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("Login");
-                            if (success.equals("1")) {
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
-                                    String email = object.getString("email").trim();
-                                    String pass = object.getString("pass").trim();
-                                    sessionManager.createSession(email,pass);
-                                    Intent intent = new Intent(MainActivity.this, NavDrawer.class);
-                                    startActivity(intent);
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            }
+                            String name = jsonObject.getString("name").trim();
+                            progressBar.setVisibility(View.GONE);
 
+                            String pass = jsonObject.getString("cpassword").trim();
+                            if(pass.equals(password)){
+                                Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+                                startActivity(intent);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(MainActivity.this, "login error." + e.toString(), Toast.LENGTH_SHORT).show();
-
                         }
+                        Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            String success = jsonObject.getString("success");
+//                            JSONArray jsonArray = jsonObject.getJSONArray("Login");
+//                            if (success.equals("1")) {
+//                                for (int i = 0; i < jsonArray.length(); i++) {
+//                                    JSONObject object = jsonArray.getJSONObject(i);
+//                                    String email = object.getString("email").trim();
+//                                    String pass = object.getString("pass").trim();
+//                                    sessionManager.createSession(email,pass);
+//                                    Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+//                                    startActivity(intent);
+//                                    progressBar.setVisibility(View.GONE);
+//                                }
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            Toast.makeText(MainActivity.this, "login error." + e.toString(), Toast.LENGTH_SHORT).show();
+//
+//                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -142,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("email", email);
                 params.put("password", password);
 
-                return super.getParams();
+                return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
