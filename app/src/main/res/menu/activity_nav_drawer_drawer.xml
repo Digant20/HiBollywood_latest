@@ -5,34 +5,52 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home"
+            android:checked="true"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profile" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/events"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Events" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/settings"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Settings" />
     </group>
-
     <item android:title="Communicate">
+
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/feedback"
+                android:icon="@drawable/round_feedback_black_18dp"
+                android:title="Feedback" />
+            <item
+                android:id="@+id/rating"
+                android:icon="@drawable/round_grade_black_18dp"
+                android:title="Rate us" />
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/round_help_black_18dp"
+                android:title="Help" />
+            <item
+                android:id="@+id/Logout"
+                android:icon="@drawable/signout"
+                android:title="Logout" />
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/info"
+                android:title="About us" />
         </menu>
     </item>
+
 
 </menu>

@@ -18,10 +18,10 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+//        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+//        getSupportActionBar().hide(); // hide the title bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
 
         super.onCreate(savedInstanceState);
@@ -29,10 +29,10 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
-        frame=(FrameLayout)findViewById(R.id.frame);
+        frame=findViewById(R.id.frame);
 //        img=(ImageView) findViewById(R.id.img);
         if (tracker==0){
-            frame.setBackgroundResource(R.drawable.new_logo);
+            frame.setBackgroundResource(R.drawable.logo1);
         }
         else {
             frame.setBackgroundResource(tracker);

@@ -1,5 +1,6 @@
 package com.example.hibollywood;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     SessionManager sessionManager;
 
     String memail, mpass;
-
     //html string code
     //private final String htmlText="<body><h5>BollyWoodConnect</h5></body>";
 
@@ -64,13 +64,18 @@ public class MainActivity extends AppCompatActivity {
         // TextView txtV=(TextView) findViewById(R.id.text);
         // txtV.setText(Html.fromHtml(htmlText));
         sessionManager = new SessionManager(this);
-        email = (EditText) findViewById(R.id.email);
-        password = (TextInputEditText) findViewById(R.id.pass);
+        if (sessionManager.isLoggedIn()){
+            Intent i = new Intent(getApplicationContext(),NavDrawer.class);
+            startActivity(i);
+            finish();
+        }
+        email =  findViewById(R.id.email);
+        password =  findViewById(R.id.pass);
 
-        signUpText = (TextView) findViewById(R.id.signUpText);
-        progressBar = (ProgressBar) findViewById(R.id.pbar);
+        signUpText =  findViewById(R.id.signUpText);
+        progressBar =  findViewById(R.id.pbar);
 
-        btn_login = (Button) findViewById(R.id.signin);
+        btn_login =  findViewById(R.id.signin);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,18 +111,31 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String name = jsonObject.getString("name").trim();
-                            progressBar.setVisibility(View.GONE);
 
-                            String pass = jsonObject.getString("cpassword").trim();
-                            if(pass.equals(password)){
-                                Intent intent = new Intent(MainActivity.this, NavDrawer.class);
-                                startActivity(intent);
-                            }
+                            String success = jsonObject.getString("success");
+                            if (success.equals("1")) {
+//                                for (int i = 0; i < jsonArray.length(); i++) {
+//                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String email = jsonObject.getString("email").trim();
+                                    String pass = jsonObject.getString("pass").trim();
+                                    sessionManager.createSession(email, pass);
+                                    Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+                                    startActivity(intent);
+                                    progressBar.setVisibility(View.GONE);
+                                }
+ //                           }
+//                            progressBar.setVisibility(View.GONE);
+//
+//                            String pass = jsonObject.getString("cpassword").trim();
+//                            if (pass.equals(password)) {
+//                                Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+//                                startActivity(intent);
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(MainActivity.this, "login error." + e.toString(), Toast.LENGTH_SHORT).show();
                         }
-                        Intent intent = new Intent(MainActivity.this, NavDrawer.class);
+//                        Intent intent = new Intent(MainActivity.this, NavDrawer.class);
 //                        try {
 //                            JSONObject jsonObject = new JSONObject(response);
 //                            String success = jsonObject.getString("success");

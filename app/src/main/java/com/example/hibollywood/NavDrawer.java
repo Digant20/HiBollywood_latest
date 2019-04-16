@@ -1,10 +1,12 @@
 package com.example.hibollywood;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,72 +21,82 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
 public class NavDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-SessionManager sessionManager;
+    SessionManager sessionManager;
 
-    private  TextView email;
+    private TextView email;
 
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
-//sessionManager=new SessionManager(this);
-//sessionManager.CheckLogin();
-//
-//        email=(TextView)findViewById(R.id.emailView);
-//
-//
-//        HashMap<String, String> user=sessionManager.getUserDetails();
-//        String mEmail=user.get(sessionManager.EMAIL);
-//
-//        email.setText(memail);
+        email = findViewById(R.id.emailView);
+
+        sessionManager = new SessionManager(this);
+        sessionManager.CheckLogin();
+        pref = getApplicationContext().getSharedPreferences("LOGIN", 0);
+        String mEmail = pref.getString("EMAIL", "");
 
 
+        if (pref.contains(mEmail)) {
+            email.setText(mEmail);
+        }else{
+            Toast.makeText(getApplicationContext(),"no email",Toast.LENGTH_LONG).show();
+        }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        builder.setMessage(R.string.exit_message);
-        builder.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              finish();
-            }
-        });
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-        AlertDialog dialog=builder.show();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.exit_message);
+            builder.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            builder.show();
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,19 +127,29 @@ SessionManager sessionManager;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-           // fragment = new Home();
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.home) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.profile) {
+//            fragment = new profile();
+            Intent i = new Intent(getApplicationContext(),MyProfile.class);
+            startActivity(i);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.events) {
+
+        } else if (id == R.id.settings) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.feedback) {
 
+        } else if (id == R.id.rating) {
+
+        } else if (id == R.id.help) {
+
+        } else if (id == R.id.about) {
+
+        } else if (id == R.id.Logout) {
+            sessionManager.logout();
         }
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
