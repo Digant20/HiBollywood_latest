@@ -18,8 +18,8 @@
         android:id="@+id/toolbar"
         >
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
 
             android:src="@drawable/ic_arrow_back_black_24dp"
             android:clickable="true"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
 
 
@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card1"
-
+android:scrollbars="none"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,7 +112,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -188,7 +188,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -219,7 +219,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -246,7 +246,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -258,7 +258,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -274,7 +274,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -286,7 +286,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -302,7 +302,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -314,7 +314,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -330,7 +330,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -342,7 +342,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -358,7 +358,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -385,7 +385,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -397,7 +397,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -413,7 +413,7 @@
         />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="5dp"
@@ -425,7 +425,7 @@
             android:layout_height="30dp"
             android:hint="e.g.31-May-1998"
             android:background="@null"
-            android:textColor="#FFF"
+            android:textColor="#000"
             android:textColorHint="#e7eaec"
             />
 
@@ -447,14 +447,12 @@
         app:cardCornerRadius="5dp"
 
         >
-        <EditText
-            android:id="@+id/picture"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:hint="e.g.31-May-1998"
-            android:background="@null"
-            android:textColor="#FFF"
-            android:textColorHint="#e7eaec"
+            android:layout_height="wrap_content"
+            android:id="@+id/img"
+            android:layout_margin="5dp"
+
             />
 
 
@@ -462,9 +460,10 @@
     </android.support.v7.widget.CardView>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="UPDATE"
-        android:background="@drawable/rectangle"
+        android:layout_margin="5dp"
+        android:background="@drawable/rectangularsignupbtn"
         android:id="@+id/upbtn"
         />
         </LinearLayout>
