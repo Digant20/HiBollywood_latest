@@ -123,7 +123,9 @@
             android:text="or"
             android:textStyle="bold" />
 
+
         <Button
+            android:id="@+id/googlebtn"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
