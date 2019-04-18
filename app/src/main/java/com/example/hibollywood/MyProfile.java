@@ -42,19 +42,19 @@ public class MyProfile extends AppCompatActivity {
         //spinner for experience
         exp = findViewById(R.id.exp);
         String[] items1 = new String[]{"New Face", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.select_dialog_singlechoice, items1);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, items1);
         exp.setAdapter(adapter1);
 
         //languages spinner
         lang = findViewById(R.id.lang);
         String[] items2 = new String[]{"Hindi", "English", "Tamil", "Telugu", "Malayalam", "Gujarati", "Urdu", "Marathi", "Odia", "Punjabi", "Bhojpuri"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.select_dialog_singlechoice, items2);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, items2);
         lang.setAdapter(adapter2);
 
         //states spinner
         state = findViewById(R.id.lang);
         String[] items3 = new String[]{"Select State", "Agra", "Delhi", "Tamilnadu", "Bhubaneswar", "Bihar", "Mumbai", "Rajastan", "Kerela", "Kolkata", "Bangalore"};
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.select_dialog_singlechoice, items3);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, items3);
         state.setAdapter(adapter3);
 
 

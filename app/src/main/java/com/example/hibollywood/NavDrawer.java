@@ -46,13 +46,6 @@ public class NavDrawer extends AppCompatActivity
         String mEmail = pref.getString("EMAIL", "");
 
 
-        if (pref.contains(mEmail)) {
-            email.setText(mEmail);
-        }else{
-            Toast.makeText(getApplicationContext(),"no email",Toast.LENGTH_LONG).show();
-        }
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);

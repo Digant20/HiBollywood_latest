@@ -4,34 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.hibollywood.MainActivity"
-    android:background="@android:color/black"
     android:alpha="1"
+    android:background="@drawable/gradient_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.example.hibollywood.MainActivity"
 
     >
 
-
-
-    <ImageView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/new_logo"
-        />
+        android:layout_height="132dp"
+        android:layout_margin="5dp"
+        android:background="#ecece7"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+
+            android:background="@drawable/roundlogoforloginpage"
+            android:padding="10dp"
+            android:src="@drawable/new_logo" />
+    </android.support.v7.widget.CardView>
+
     <EditText
-        android:layout_width="350dp"
-        android:layout_gravity="center"
-        android:layout_height="40dp"
         android:id="@+id/email"
-        android:hint="  Email/Username"
-        android:textColor="@android:color/white"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:textColorHint="@android:color/white"
-        android:inputType="text"
         android:background="@drawable/round"
-        
+        android:hint="  Email/Username"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+
         />
 
     <android.support.design.widget.TextInputLayout
@@ -40,11 +50,10 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:gravity="center"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleDrawable="@drawable/icon_password"
-        app:passwordToggleTint="@android:color/holo_blue_light"
         app:hintEnabled="false"
-        >
+        app:passwordToggleDrawable="@drawable/icon_password"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@android:color/holo_blue_light">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/pass"
@@ -57,73 +66,81 @@
             android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
+
         <ProgressBar
+            android:id="@+id/pbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:id="@+id/pbar"
-            />
+            android:visibility="gone" />
     </android.support.design.widget.TextInputLayout>
 
-      <Button
-          android:id="@+id/signin"
-          android:layout_width="350dp"
-          android:layout_gravity="center"
-          android:layout_height="40dp"
-          android:textColor="@android:color/black"
-          android:layout_marginTop="10dp"
-          android:textSize="20dp"
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundsignin"
+        android:text="Sign In"
 
-          android:background="@drawable/roundsignin"
-          android:text="Sign In"
-          />
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password?"
         android:layout_gravity="center"
-        android:textSize="15sp"
-        android:padding="10dp"
         android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="Forgot Password?"
         android:textColor="@android:color/white"
-        />
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <Button
-            android:layout_width="145dp"
+            android:layout_width="164dp"
             android:layout_height="wrap_content"
-            android:text="Facebook"
-            android:padding="10dp"
-            android:textSize="10sp"
-            android:typeface="sans"
+            android:layout_margin="5dp"
+            android:layout_marginRight="25dp"
             android:background="@drawable/roundfacebook0"
+           android:padding="10dp"
+            android:text="Facebook"
             android:textColor="@android:color/white"
-            android:layout_marginRight="40dp"
-            />
-        <Button
-            android:layout_width="145dp"
+            android:textSize="10sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Google"
+            android:layout_gravity="center"
+            android:text="or"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:background="@drawable/roundgoogle"
             android:padding="10dp"
-            android:textSize="10sp"
-
+            android:text="Google"
             android:textColor="@android:color/white"
-            />
+            android:textSize="10sp" />
 
     </LinearLayout>
+
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-    >
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -132,18 +149,18 @@
             android:text="New User?"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp" />
-    <TextView
-        android:id="@+id/signUpText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:clickable="true"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="@android:color/holo_orange_dark"
-       />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/signUpText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:padding="10dp"
+            android:text="Sign Up"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

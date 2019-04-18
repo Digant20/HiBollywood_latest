@@ -6,24 +6,26 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:background="#00bcd4"
+    android:background="@drawable/gradbtn"
     tools:context=".SignUp">
 
 
     <ImageView
         android:layout_width="106dp"
-        android:layout_height="78dp"
+        android:layout_height="106dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/roundlogo1"
+        android:padding="10dp"
         android:src="@drawable/new_logo" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up Here!"
-        android:textSize="20sp"
-        android:textColor="#FFF"
         android:layout_gravity="center"
+        android:text="Sign Up Here!"
+        android:textColor="#FFF"
+        android:textSize="20sp"
 
         />
     <LinearLayout
@@ -116,16 +118,17 @@
             />
         <Button
             android:id="@+id/btnSignup"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Sign Up"
             android:onClick="signUp"
+            tools:ignore="OnClick"
             android:textColorHint="#000"
             android:textSize="15dp"
             android:layout_gravity="center"
             android:background="@drawable/rectangularsignupbtn"
             android:layout_marginTop="15dp"
-            />
+             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"

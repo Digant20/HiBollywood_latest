@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
         Thread display= new Thread(){
             public void run(){
                 try{
-                    sleep(1 * 1000);
+                    sleep(1 * 500);//0.5 seconds
                     Intent i= new Intent(getBaseContext(),MainActivity.class);
                     startActivity(i);
                 }
