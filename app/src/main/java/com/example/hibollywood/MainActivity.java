@@ -43,7 +43,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity {
     private Button btn_login;
     private EditText email;
     private TextInputEditText password;
@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private ProgressBar progressBar;
     SessionManager sessionManager;
 
-    private GoogleApiClient googleApiClient;
-    private static final int RC_SIGN_IN = 1;
-private  Button googlebtn;
+
     String memail, mpass;
     //html string code
     //private final String htmlText="<body><h5>BollyWoodConnect</h5></body>";
@@ -75,24 +73,6 @@ private  Button googlebtn;
         //html string code
         // TextView txtV=(TextView) findViewById(R.id.text);
         // txtV.setText(Html.fromHtml(htmlText));
-        GoogleSignInOptions gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-
-
-
-        googlebtn=findViewById(R.id.googlebtn);
-        googlebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent,RC_SIGN_IN);
-            }
-        });
 
 
         sessionManager = new SessionManager(this);
@@ -216,27 +196,5 @@ private  Button googlebtn;
 
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RC_SIGN_IN){
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-        }
-    }
-    private void handleSignInResult(GoogleSignInResult result){
-        if(result.isSuccess()){
-            gotoProfile();
-        }else{
-            Toast.makeText(getApplicationContext(),"Sign in cancel",Toast.LENGTH_LONG).show();
-        }
-    }
-    private void gotoProfile(){
-        Intent intent=new Intent(this,NavDrawer.class);
-        startActivity(intent);
-    }
 }

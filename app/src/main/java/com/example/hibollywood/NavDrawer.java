@@ -39,7 +39,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
 public class NavDrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     SessionManager sessionManager;
 
@@ -47,8 +47,7 @@ public class NavDrawer extends AppCompatActivity
     ImageView imageView;
 
     SharedPreferences pref;
-    private GoogleApiClient googleApiClient;
-    private GoogleSignInOptions gso;
+
 
 
     @Override
@@ -58,14 +57,7 @@ public class NavDrawer extends AppCompatActivity
         email = findViewById(R.id.emailView);
         imageView=findViewById(R.id.imageView);
 
-        gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
 
-        googleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
 
 
         sessionManager = new SessionManager(this);
@@ -92,52 +84,6 @@ public class NavDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-    }
-    public void logout(){
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        if (status.isSuccess()){
-                            Intent intent=new Intent(getApplicationContext(),NavDrawer.class);
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(getApplicationContext(),"Session not close",Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        OptionalPendingResult<GoogleSignInResult> opr= Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-        if(opr.isDone()){
-            GoogleSignInResult result=opr.get();
-            handleSignInResult(result);
-        }else{
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                    handleSignInResult(googleSignInResult);
-                }
-            });
-        }
-    }
-    private void handleSignInResult(GoogleSignInResult result){
-        if(result.isSuccess()){
-            GoogleSignInAccount account=result.getSignInAccount();
-            email.setText(account.getDisplayName());
-
-            try{
-                Glide.with(this).load(account.getPhotoUrl()).into(imageView);
-            }catch (NullPointerException e){
-                Toast.makeText(getApplicationContext(),"image not found",Toast.LENGTH_LONG).show();
-            }
-
-        }else{
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
-        }
     }
 
 
@@ -220,7 +166,7 @@ public class NavDrawer extends AppCompatActivity
 
         } else if (id == R.id.Logout) {
 
-            logout();
+
             sessionManager.logout();
         }
         if (fragment != null) {
@@ -234,8 +180,5 @@ public class NavDrawer extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
 }
